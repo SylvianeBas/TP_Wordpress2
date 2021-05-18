@@ -104,6 +104,13 @@
         dest: /tmp/wordpress.zip
         checksum: "sha1:{{wp_checksum.content}}"
 
+    - name: Unzip Wordpress
+      unarchive:
+        src: /tmp/wordpress.zip
+        dest: /tmp
+        remote_src: yes
+        creates: /tmp/wordpress/wp-settings.php
+
 #HANDLERS
   handlers:
       - name: restart nginx
